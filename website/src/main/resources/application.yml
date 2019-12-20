@@ -1,0 +1,40 @@
+server:
+  port: 80
+  address: 127.0.0.1
+spring:
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: true
+    check-template: true
+    check-template-location: true
+    suffix: .ftl
+    prefix: classpath:/templates/
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html; charset=utf-8
+  freemarker:
+    suffix: .ftl
+    charset: UTF-8
+    content-type: text/html
+    cache: true
+    enabled: true
+    allow-request-override: false
+    allow-session-override: false
+    check-template-location: true
+    prefer-file-system-access: true
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    template-loader-path: classpath:/templates
+management:
+  server:
+    port: 1352
+  endpoints:
+    web:
+      exposure:
+        include: '*'

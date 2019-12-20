@@ -1,0 +1,43 @@
+bs:
+ port:
+  rmi: 9001
+ host:
+  local: 192.168.56.1
+db:
+  redis:
+    nodes: 127.0.0.1:7000,127.0.0.2:7000
+    max-redirects: 8
+  mysql:
+    bs:
+      url: jdbc:mysql://127.0.0.1:3306/learn?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      driver: com.mysql.jdbc.Driver
+      username: admin
+      password: Huawei@123
+  properties:
+    max-total: 2048
+    max-active: 20
+    initial-size: 5
+    min-idle: 10
+    max-idle: 200
+    max-wait: 5000
+    max-wait-millis: 1500
+    validation-query: select 1
+    remove-abandoned: true
+    remove-abandoned-timeout: 1800
+    num-tests-per-eviction-run: 1024
+    min-evictable-idle-time-millis: 30000
+    time-between-eviction-runs-millis: 30000
+    soft-min-evictable-idle-time-millis: 10000
+    test-on-borrow: true
+    test-on-return: false
+    test-while-idle: true
+    block-when-exhausted: false
+mail:
+  user: gd_bujimo@163.com
+  password: JWX762721
+  smtp:
+    host: smtp.163.com
+    port: 993
+static:
+  url: http://dev.xh.learn.static.com
+  version: 1.0.0

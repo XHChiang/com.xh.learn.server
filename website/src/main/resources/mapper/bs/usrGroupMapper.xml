@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.learn.website.webProducts.usr.mapper.UsrGroupMapper">
+    <resultMap type="usrGroup" id="result_map_usrgroup">
+        <id column="id" property="id" />
+        <collection property="usrs" column="id" fetchType="eager"
+            select="com.xh.learn.website.webProducts.usr.mapper.UsrMapper.queryUsrsByGroupId" />
+
+        <collection property="deletedUsrs" column="id"
+            select="com.xh.learn.website.webProducts.usr.mapper.UsrMapper.queryDeletedUsrsByGroupId" />
+    </resultMap>
+
+    <resultMap type="usrGroup" id="result_map_usrgroup_v2" autoMapping="true">
+        <id column="id" property="id" />
+        <collection property="usrs" fetchType="eager" ofType="usr">
+            <id column="usrId" />
+            <result property="name" column="usrName" />
+            <result property="isDeleted" column="usrIsDeleted" />
+            <result property="createTime" column="usrCreateTime" />
+            <result property="updateTime" column="usrUpdateTime" />
+        </collection>
+    </resultMap>
+
+    <select id="queryUsrGroups" resultMap="result_map_usrgroup">
+        SELECT
+        a.id,
+        a.sort,
+        a.`name`,
+        a.parent_id,
+        a.is_deleted,
+        a.description,
+        a.create_time,
+        a.update_time
+        FROM
+        usr_group AS a
+        WHERE
+        a.is_deleted = 0
+    </select>
+
+    <select id="queryUsrGroupsV2" resultMap="result_map_usrgroup_v2">
+        SELECT
+        a.id,
+        a.sort,
+        a.`name`,
+        a.parent_id,
+        a.is_deleted,
+        a.description,
+        a.create_time,
+        a.update_time,
+        b.id AS usrId,
+        b.group_id,
+        b.email,
+        b.account,
+        b.`password`,
+        b.sex,
+        b.`name` AS usrName,
+        b.phone_number,
+        b.is_deleted AS usrIsDeleted,
+        b.create_time AS usrCreateTime,
+        b.update_time AS usrUpdateTime
+        FROM
+        usr_group
+        AS a
+        INNER JOIN usr AS b ON a.id = b.group_id
+        WHERE
+        a.is_deleted = 0
+        AND b.is_deleted = 0
+    </select>
+</mapper>

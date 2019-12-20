@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.learn.website.webProducts.usr.mapper.UsrMapper">
+    <cache eviction="LRU" flushInterval="1000">
+        <property name="host" value="localhost"/>
+    </cache>
+    <resultMap type="usr" id="result_map_usr">
+        <id column="id" property="id" />
+        <!-- 覆盖系统TypeHandler -->
+        <result column="email" property="email" typeHandler="com.xh.learn.website.config.ibatis.typeHandler.StringTypeHandler" />
+        <!-- 鉴别器 -->
+        <discriminator javaType="int" column="sex">
+            <case value="0" resultType="usr"></case>
+            <case value="1" resultType="maleUsr"></case>
+            <case value="2" resultType="femaleUsr"></case>
+        </discriminator>
+    </resultMap>
+
+    <resultMap type="maleUsr" id="result_map_male_usr">
+
+    </resultMap>
+
+    <resultMap type="femaleUsr" id="result_map_female_usr">
+
+    </resultMap>
+
+    <resultMap type="usr" id="result_map_groupusr">
+        <id property="id" column="id" />
+    </resultMap>
+
+    <sql id="sql_query_usrs">
+        SELECT
+        a.id,
+        a.group_id,
+        a.email,
+        a.account,
+        a.`password`,
+        a.sex,
+        a.`name`,
+        a.phone_number,
+        a.is_deleted,
+        a.create_time,
+        a.update_time
+        FROM
+        usr AS a
+    </sql>
+
+    <select id="queryUsrs" resultMap="result_map_usr">
+        <include refid="sql_query_usrs"></include>
+        WHERE
+        a.is_deleted = 0
+    </select>
+
+    <select id="queryUsrsByGroupId" resultMap="result_map_groupusr">
+        <include refid="sql_query_usrs"></include>
+        WHERE
+        a.is_deleted = 0
+        AND a.group_id = #{groupId}
+    </select>
+
+    <select id="queryDeletedUsrsByGroupId" resultMap="result_map_groupusr">
+        <include refid="sql_query_usrs"></include>
+        WHERE
+        a.is_deleted = 1
+        AND a.group_id = #{groupId}
+    </select>
+</mapper>
