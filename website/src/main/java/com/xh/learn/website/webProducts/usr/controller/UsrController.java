@@ -17,6 +17,9 @@ import com.xh.learn.sdk.error.SdkError;
 import com.xh.learn.website.webProducts.usr.entity.Usr;
 import com.xh.learn.website.webProducts.usr.service.UsrService;
 
+/**
+ * 用户
+ */
 @RestController
 @RequestMapping("/usr")
 public class UsrController {
