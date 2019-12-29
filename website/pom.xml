@@ -163,8 +163,8 @@
 		
 	</dependencies>
 
-	<build>
-		<!-- <plugins>
+	<!--<build>
+		&lt;!&ndash; <plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -187,9 +187,9 @@
 					<outputDirectory>target/manage/WEB-INF/lib</outputDirectory>
 				</configuration>
 			</plugin>
-		</plugins> -->
+		</plugins> &ndash;&gt;
 
 		<finalName>website</finalName>
-	</build>
+	</build>-->
 
 </project>
