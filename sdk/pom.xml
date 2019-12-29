@@ -46,8 +46,8 @@
 
     </dependencies>
 
-    <!--<build>
+    <build>
         <finalName>sdk</finalName>
-    </build>-->
+    </build>
 
 </project>
