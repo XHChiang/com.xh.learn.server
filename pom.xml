@@ -112,7 +112,7 @@
 					<include>**/*.yml</include>
 					<include>**/*.properties</include>
 				</includes>
-				<filtering>false</filtering>
+				<filtering>false</filtering> <!-- 是否替换占位符 -->
 			</resource>
 
 			<resource>
