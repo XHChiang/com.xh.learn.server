@@ -12,7 +12,7 @@
 			3>提交（mvn versions:commit）
 			4>撤销（mvn versions:revert）
 	
-	# versions-maven-plugin
+	# tomcat7-maven-plugin
 		[坐标]:
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
@@ -30,6 +30,34 @@
 		[用法]：
 			1>部署至TOMCAT（mvn tomcat7:deploy）
 			2>删除部署（mvn tomcat7:undeploy）
+
+	# maven-dependency-plugin
+	    [坐标]:
+	        <plugins>
+    			<plugin>
+    				<groupId>org.apache.maven.plugins</groupId>
+    				<artifactId>maven-dependency-plugin</artifactId>
+    				<executions>
+    					<execution>
+    						<phase>prepare-package</phase>
+    						<goals>
+    							<goal>copy</goal>
+    						</goals>
+    					</execution>
+    				</executions>
+    				<configuration>
+    					<artifactItems>
+    						<artifactItem>
+    							<groupId>com.xh.learning</groupId>
+    							<artifactId>example</artifactId>
+    							<version>1.0-SNAPSHOT</version>
+    						</artifactItem>
+    					</artifactItems>
+    					<outputDirectory>./target/server/WEB-INF/lib</outputDirectory>
+    				</configuration>
+    			</plugin>
+    		</plugins>
+
 【RPC】
 	-概念：把应用中的某些功能发布为[远程服务]并提供给[其他应用]来使用。
 	-模型

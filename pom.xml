@@ -8,7 +8,7 @@
 
 	<version>1.0-SNAPSHOT</version>
 	<artifactId>server</artifactId>
-	<groupId>com.xh.learn.server</groupId>
+	<groupId>com.xh.learn</groupId>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -123,8 +123,6 @@
 				<filtering>false</filtering>
 			</resource>
 		</resources>
-
-		<finalName>server</finalName>
 	</build>
 
 	<distributionManagement>
