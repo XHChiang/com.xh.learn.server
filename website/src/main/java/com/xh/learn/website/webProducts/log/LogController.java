@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xh.learn.sdk.entity.Result;
 
+/**
+ * 日志
+ */
 @RestController
 @RequestMapping("/log")
 public class LogController {
