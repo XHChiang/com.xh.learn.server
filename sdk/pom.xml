@@ -7,12 +7,11 @@
     <packaging>jar</packaging>
 
     <artifactId>sdk</artifactId>
-    <groupId>com.xh.learn.sdk</groupId>
 
     <parent>
         <version>1.0-SNAPSHOT</version>
         <artifactId>server</artifactId>
-        <groupId>com.xh.learn.server</groupId>
+        <groupId>com.xh.learn</groupId>
     </parent>
 
     <dependencies>
@@ -43,11 +42,5 @@
             <artifactId>cglib</artifactId>
             <version>3.2.7</version>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <finalName>sdk</finalName>
-    </build>
-
 </project>
