@@ -17,7 +17,7 @@
     </parent>
 
 	<properties>
-		<start-class>com.xh.learn.website.LearnServerApplication</start-class>
+		<start-class>com.xh.learn.website.LearnStarter</start-class>
 	</properties>
 
 	<dependencies>
