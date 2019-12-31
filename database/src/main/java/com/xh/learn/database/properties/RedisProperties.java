@@ -1,4 +1,4 @@
-package com.xh.learn.databse.dbs.redis;
+package com.xh.learn.database.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

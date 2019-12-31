@@ -1,4 +1,4 @@
-package com.xh.learn.databse.dbs.mysql;
+package com.xh.learn.database.dbs.mysql;
 
 import javax.sql.DataSource;
 
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.xh.learn.databse.properties.DatabaseProperties;
+import com.xh.learn.database.properties.DatabaseProperties;
 
 @Configuration
 public class Datasoures {

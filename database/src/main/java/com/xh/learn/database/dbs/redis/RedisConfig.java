@@ -1,10 +1,10 @@
-package com.xh.learn.databse.dbs.redis;
+package com.xh.learn.database.dbs.redis;
 
+import com.xh.learn.database.properties.DatabaseProperties;
+import com.xh.learn.database.properties.RedisProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.xh.learn.databse.properties.DatabaseProperties;
 
 @Configuration
 public class RedisConfig {
