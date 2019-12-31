@@ -12,15 +12,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan(basePackages = "com.xh.learn")
 @ServletComponentScan(basePackages = "com.xh.learn")
-public class LearnServerApplication extends SpringBootServletInitializer {
+public class LearnStarter extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(LearnServerApplication.class);
+		return builder.sources(LearnStarter.class);
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(LearnServerApplication.class, args);
+		SpringApplication.run(LearnStarter.class, args);
 	}
 
 }

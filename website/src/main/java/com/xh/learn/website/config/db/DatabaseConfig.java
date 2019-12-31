@@ -10,10 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import com.xh.learn.sdk.util.ResourceUtil;
 
 import tk.mybatis.spring.annotation.MapperScan;
 
@@ -22,10 +21,11 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class DatabaseConfig {
 
 	@Bean(name = "bs_sqlSessionFactory")
-	public SqlSessionFactory sqlSessionFactory(@Qualifier("bs_dataSource") DataSource dataSource) throws Exception {
+	public SqlSessionFactory initSqlSessionFactory(@Qualifier("bs_dataSource") DataSource dataSource) throws Exception {
 		final SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 
-		sqlSessionFactory.setMapperLocations(ResourceUtil.getResource("mapper", "bs/*.xml"));
+		sqlSessionFactory.setMapperLocations(
+				new PathMatchingResourcePatternResolver().getResources("classpath*:mappers/**/*.xml"));
 		sqlSessionFactory.setConfigLocation(new ClassPathResource("mybatis-conf.xml"));
 		sqlSessionFactory.setDataSource(dataSource);
 		sqlSessionFactory.setFailFast(true);
@@ -34,13 +34,12 @@ public class DatabaseConfig {
 	}
 
 	@Bean(name = "bs_sqlSessionTemplate")
-	public SqlSessionTemplate sqlSessionTemplate(@Qualifier("bs_sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
-		SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory, ExecutorType.SIMPLE);
-		return sqlSessionTemplate;
+	public SqlSessionTemplate initSqlSessionTemplate(@Qualifier("bs_sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+		return new SqlSessionTemplate(sqlSessionFactory, ExecutorType.SIMPLE);
 	}
 
 	@Bean(name = "bs_transactionManager")
-	public PlatformTransactionManager transactionManager(@Qualifier("bs_dataSource") DataSource dataSource) {
+	public PlatformTransactionManager initDataTransactionManager(@Qualifier("bs_dataSource") DataSource dataSource) {
 		DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
 		dataSourceTransactionManager.setDataSource(dataSource);
 		return dataSourceTransactionManager;
