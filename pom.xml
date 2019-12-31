@@ -18,19 +18,26 @@
 	</parent>
 
 	<modules>
-		<module>sdk</module>
 		<module>website</module>
 		<module>database</module>
 		<module>permission</module>
 	</modules>
 
 	<properties>
+		<sdk.version>1.0-SNAPSHOT</sdk.version>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<dependencies>
+		<!-- SDK -->
+		<dependency>
+			<groupId>com.xh.learn</groupId>
+			<artifactId>sdk</artifactId>
+			<version>${sdk.version}</version>
+		</dependency>
+
 		<!-- 日志 -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -61,11 +68,41 @@
 			</exclusions>
 		</dependency>
 
-		<!-- 热部署 -->
+		<!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.2</version>
+
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
